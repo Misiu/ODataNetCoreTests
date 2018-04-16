@@ -1,0 +1,11 @@
+C:\Users\jaguszt\Documents\Visual Studio 2017\Projects\CoreTest1\CoreTest1\bin\Debug\netcoreapp2.0\CoreTest1.deps.json
+C:\Users\jaguszt\Documents\Visual Studio 2017\Projects\CoreTest1\CoreTest1\bin\Debug\netcoreapp2.0\CoreTest1.runtimeconfig.json
+C:\Users\jaguszt\Documents\Visual Studio 2017\Projects\CoreTest1\CoreTest1\bin\Debug\netcoreapp2.0\CoreTest1.runtimeconfig.dev.json
+C:\Users\jaguszt\Documents\Visual Studio 2017\Projects\CoreTest1\CoreTest1\bin\Debug\netcoreapp2.0\CoreTest1.dll
+C:\Users\jaguszt\Documents\Visual Studio 2017\Projects\CoreTest1\CoreTest1\bin\Debug\netcoreapp2.0\CoreTest1.pdb
+C:\Users\jaguszt\Documents\Visual Studio 2017\Projects\CoreTest1\CoreTest1\obj\Debug\netcoreapp2.0\CoreTest1.csprojResolveAssemblyReference.cache
+C:\Users\jaguszt\Documents\Visual Studio 2017\Projects\CoreTest1\CoreTest1\obj\Debug\netcoreapp2.0\CoreTest1.csproj.CoreCompileInputs.cache
+C:\Users\jaguszt\Documents\Visual Studio 2017\Projects\CoreTest1\CoreTest1\obj\Debug\netcoreapp2.0\CoreTest1.AssemblyInfoInputs.cache
+C:\Users\jaguszt\Documents\Visual Studio 2017\Projects\CoreTest1\CoreTest1\obj\Debug\netcoreapp2.0\CoreTest1.AssemblyInfo.cs
+C:\Users\jaguszt\Documents\Visual Studio 2017\Projects\CoreTest1\CoreTest1\obj\Debug\netcoreapp2.0\CoreTest1.dll
+C:\Users\jaguszt\Documents\Visual Studio 2017\Projects\CoreTest1\CoreTest1\obj\Debug\netcoreapp2.0\CoreTest1.pdb
