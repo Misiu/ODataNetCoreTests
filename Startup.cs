@@ -1,13 +1,14 @@
 ﻿using CoreTest1.Models;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
+using Microsoft.AspNet.OData.Routing.Conventions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Data.Edm;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData;
 using Microsoft.OData.UriParser;
+using System.Collections.Generic;
 
 namespace CoreTest1
 {
@@ -41,20 +42,13 @@ namespace CoreTest1
 
 			app.UseMvc(builder =>
 			{
-				builder.EnableDependencyInjection(b =>
-				{
-					b.AddService(Microsoft.OData.ServiceLifetime.Singleton, typeof(ODataUriResolver), sp => new StringAsEnumResolver());
-				});
+				builder.MapODataServiceRoute("ODataRoute", "odata", containerBuilder =>
+					containerBuilder.AddService(Microsoft.OData.ServiceLifetime.Singleton, sp => modelBuilder.GetEdmModel())
+						.AddService<IEnumerable<IODataRoutingConvention>>(Microsoft.OData.ServiceLifetime.Singleton, sp => ODataRoutingConventions.CreateDefaultWithAttributeRouting("ODataRoute", builder))
+						.AddService<ODataUriResolver>(Microsoft.OData.ServiceLifetime.Singleton, sp => new StringAsEnumResolver()));
+						//.AddService<ODataUriResolver>(Microsoft.OData.ServiceLifetime.Singleton, sp => new UnqualifiedODataUriResolver { EnableCaseInsensitive = true }));
 
-				builder.MapODataServiceRoute("ODataRoute", "odata", modelBuilder.GetEdmModel());
-
-				//builder.MapODataServiceRoute("ODataRoute", "odata", containerBuilder =>
-			 //  containerBuilder.AddService(Microsoft.OData.ServiceLifetime.Singleton, sp => modelBuilder.GetEdmModel())
-				//			   //.AddService(ServiceLifetime.Singleton, sp => DefaultRouteConventions(routeName, builder))
-				//			   .AddService<ODataUriResolver>(Microsoft.OData.ServiceLifetime.Singleton, sp => new UnqualifiedODataUriResolver { EnableCaseInsensitive = true })
-				//			   );
-				//routeBuilder.SetDefaultODataOptions(new Microsoft.AspNet.OData.ODataOptions { NullDynamicPropertyIsEnabled = true });
-				builder.Filter();
+			builder.Filter();
 				builder.MaxTop(10);
 				//routeBuilder.Select();
 				//routeBuilder.OrderBy();
@@ -62,18 +56,6 @@ namespace CoreTest1
 				//routeBuilder.Expand();
 				//routeBuilder.SetDefaultQuerySettings(new Microsoft.AspNet.OData.Query.DefaultQuerySettings { EnableCount = true, EnableFilter = true, MaxTop = null, EnableOrderBy = true, EnableExpand = true, EnableSelect = true });
 			});
-
-		}
-	}
-
-	public class CaseInsensitiveResolver : ODataUriResolver
-	{
-		private bool _enableCaseInsensitive;
-
-		public override bool EnableCaseInsensitive
-		{
-			get => true;
-			set => _enableCaseInsensitive = value;
 		}
 	}
 }
